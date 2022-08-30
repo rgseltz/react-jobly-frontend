@@ -8,10 +8,13 @@ import './App.css';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  const logout = () => {
+    setCurrentUser(null)
+  }
   return (
     <BrowserRouter>
       <UserContext.Provider>
-        <Navigation/>
+        <Navigation logout={logout}/>
         <Routes/>
         {currentUser ? <Homepage/> : <div><Link to="/login">Login</Link> <Link to="/register">Sign Up</Link></div>}
       </UserContext.Provider>

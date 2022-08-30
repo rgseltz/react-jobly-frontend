@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import {NavItem, NavLink, Link, Nav} from "react-router-dom";
 import userContext from "./userContext";
-const Navigation = () => {
+const Navigation = ({logout}) => {
     const currentUser = useContext(userContext);
     const loggedOut = () => {
         return (
@@ -35,10 +35,10 @@ const Navigation = () => {
                         <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" to="/user-form">User</NavLink>
+                        <NavLink className="nav-link" to="/profile-form">Profile</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" to="/">Signout</NavLink>
+                        <Link className="nav-link" to="/" onClick={logout}>Logout</Link>
                     </li>
                 </ul>
             </div>
