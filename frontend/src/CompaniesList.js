@@ -21,7 +21,7 @@ const CompaniesList = () => {
     return (
         <>
         <SearchForm search={getCompanies}/>
-        {companies.length === 0 ? <p>Nothing Found</p> : companies.map(c => <div><CompanyCard name={c.name} handle={c.handle} logo={c.logoUrl} description={c.description} employees={c.numEmployees}/></div>)}
+        {companies.length === 0 ? <p>Nothing Found</p> : companies.map(c => <div><CompanyCard key={c.handle}name={c.name} handle={c.handle} logo={c.logoUrl} description={c.description} employees={c.numEmployees}/></div>)}
         </>
     )
 }
