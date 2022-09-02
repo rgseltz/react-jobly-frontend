@@ -1,9 +1,10 @@
 import React from "react";
-const JobList = () => {
+import JobCard from "./JobCard";
+const JobList = ({jobs}) => {
     return (
         <>
         <h1>Job List</h1>
-        <p>On mount will useEffect to make request for ALL JOBS BABY!</p>
+        {jobs.map(j => <JobCard company={j.compy} title={j.title} equity={j.equity} salary={j.salary}/>)}
         </>
     )
 }
