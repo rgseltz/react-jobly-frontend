@@ -35,6 +35,7 @@ function App() {
     try{
       let token = await JoblyApi.login(loginFormData);
       setToken(token);
+      console.log(token);
     } catch (err) {
       console.error('invalid login', err)
     }
