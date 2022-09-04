@@ -3,6 +3,7 @@ import {NavItem, NavLink, Link, Nav} from "react-router-dom";
 import userContext from "./userContext";
 const Navigation = ({logout}) => {
     const currentUser = useContext(userContext);
+    console.log(currentUser);
     const loggedOut = () => {
         return (
             <div className="navbar-right" id="navbarNav">
@@ -49,7 +50,7 @@ const Navigation = ({logout}) => {
     <nav className="navbar navbar-expand-lg bg-light">
   <div className="container-fluid">
     <Link className="navbar-brand" to="/">Jobly</Link>
-    {currentUser ? loggedIn() : loggedOut()}
+    {currentUser.length===0 ? loggedIn() : loggedOut()}
   </div>
 </nav>
     )

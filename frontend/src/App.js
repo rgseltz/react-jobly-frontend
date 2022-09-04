@@ -13,6 +13,7 @@ function App() {
   const [token, setToken] = useState(null)
   const logout = () => {
     setCurrentUser(null)
+    setToken(null);
   }
   // useEffect(async () => {
   //   if (token) {
@@ -24,18 +25,27 @@ function App() {
   const registerForToken = async (registerFormData) => {
     try {
       let token = await JoblyApi.register(registerFormData)
-      console.log(token)
-      return token;
+      setToken(token);
     } catch (err) {
       console.log(err)
     }
   }
+
+  const login = async (loginFormData) => {
+    try{
+      let token = await JoblyApi.login(loginFormData);
+      setToken(token);
+    } catch (err) {
+      console.error('invalid login', err)
+    }
+  }
+  console.log(token);
   return (
     <BrowserRouter>
       <UserContext.Provider value={{currentUser, setCurrentUser}}>
         <Navigation logout={logout}/>
-        <Routes register={registerForToken}/>
-        {currentUser ? <Homepage/> : <div><Link to="/login">Login</Link> <Link to="/register">Sign Up</Link></div>}
+        <Routes register={registerForToken} login={login}/>
+        {currentUser ? <Homepage/> : <div><Link to="/login">Login</Link><Link to="/register">Sign Up</Link></div>}
       </UserContext.Provider>
     </BrowserRouter>
   );
