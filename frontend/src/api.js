@@ -38,6 +38,11 @@ class JoblyApi {
 
   /** Get details on a company by handle. */
 
+  static async getCurrentUser(username) {
+    let res = await this.request(`users/${username}`)
+    return res.user;
+  }
+
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
     return res.company;
@@ -62,7 +67,7 @@ class JoblyApi {
   }
 
   static async login(formData) {
-    let res = this.request('auth/token', formData,  'post')
+    let res = await this.request('auth/token', formData,  'post')
     return res.token;
   }
 

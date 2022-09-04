@@ -12,16 +12,26 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useState(null)
   const logout = () => {
-    setCurrentUser(null)
-    setToken(null);
+    // setCurrentUser(null)
+    // setToken(null);
+    console.log('YOU ARE LOGGED OUT SUCKA')
   }
-  // useEffect(async () => {
-  //   if (token) {
-  //     await JoblyApi.currentUser(token);
-  //   }
-  // }
-  // )
 
+  useEffect(() => {
+    const getUser = async () => {
+    if (token) {
+      let {username} = jwt.decode(token);
+      console.log(username);
+      JoblyApi.token = token;
+      let user = await JoblyApi.getCurrentUser(username);
+      console.log(user)
+      setCurrentUser(user);
+        }
+      }
+      getUser();
+  }, [token]
+  );  
+  console.log('current user', currentUser);
   const registerForToken = async (registerFormData) => {
     try {
       let token = await JoblyApi.register(registerFormData)
@@ -43,10 +53,10 @@ function App() {
   console.log(token);
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{currentUser, setCurrentUser}}>
+      <UserContext.Provider value={currentUser}>
         <Navigation logout={logout}/>
         <Routes register={registerForToken} login={login}/>
-        {currentUser ? <Homepage/> : <div><Link to="/login">Login</Link><Link to="/register">Sign Up</Link></div>}
+        {!currentUser && <div> <Link to="/login">Login</Link><Link to="/register">Sign Up</Link></div> }
       </UserContext.Provider>
     </BrowserRouter>
   );

@@ -50,7 +50,7 @@ const Navigation = ({logout}) => {
     <nav className="navbar navbar-expand-lg bg-light">
   <div className="container-fluid">
     <Link className="navbar-brand" to="/">Jobly</Link>
-    {currentUser.length===0 ? loggedIn() : loggedOut()}
+    {currentUser ? loggedIn() : loggedOut()}
   </div>
 </nav>
     )

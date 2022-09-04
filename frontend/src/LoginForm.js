@@ -12,9 +12,9 @@ const LoginForm = ({login}) => {
         console.log(formData);
     }
     const history = useHistory()
-    const handleSubmit = (evt) => {
+    const handleSubmit = async (evt) => {
         evt.preventDefault();
-        login(formData);
+        await login(formData);
         history.push('/companies');
     }
     return (
@@ -29,7 +29,7 @@ const LoginForm = ({login}) => {
                    <label className="form-label" htmlFor="password">Password</label>
                    <input type="password" className="form-control" id="password"  onChange={handleChange} value={formData.password} name="password"/>
                 </div>
-                <button>Sign Up</button>
+                <button>Login</button>
             </form>
         </div>
     )
