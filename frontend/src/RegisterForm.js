@@ -18,7 +18,7 @@ const RegisterForm = ({register}) => {
     const handleSubmit = async (evt) => {
         evt.preventDefault();
         // const {firstName, lastName, email, password, username} = formData;
-        register(formData);
+        await register(formData);
         setFormData(INITIAL_STATE);
         history.push('/companies');
     }
