@@ -1,6 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react';
 import {BrowserRouter, Link} from 'react-router-dom';
 import UserContext from './userContext';
+import useLocalStorage from './useLocalStorage';
 import JoblyApi from './api';
 import Navigation from './Navigation';
 import Homepage from './Homepage';
@@ -10,10 +11,10 @@ import './App.css';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [token, setToken] = useState(null)
+  const [token, setToken] = useLocalStorage('token');
   const logout = () => {
-    // setCurrentUser(null)
-    // setToken(null);
+    setCurrentUser(null)
+    setToken(null);
     console.log('YOU ARE LOGGED OUT SUCKA')
   }
 
