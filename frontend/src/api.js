@@ -55,6 +55,12 @@ class JoblyApi {
     return res.jobs
   }
 
+  static async register(formData) {
+    let res = await this.request('auth/register' , formData, 'post')
+    // console.log(res.user)
+    return res.token;
+  }
+
   // obviously, you'll add a lot here ...
 }
 

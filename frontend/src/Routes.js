@@ -10,7 +10,7 @@ import ProfileForm from './ProfileForm';
 // import CompanyConext from "./companyContext";
 
 
-const Routes = () => {
+const Routes = ({register}) => {
 return (
     // <CompanyConext.Provider value={{companies, setCompanies, description, name, handle, employees}}>
         <Switch>
@@ -19,7 +19,7 @@ return (
             <Route path={'/jobs'}><Jobs/></Route>
             <Route path={'/profile-form'}><ProfileForm/></Route>
             <Route path={'/login'}><LoginForm/></Route>
-            <Route path={'/register'}><RegisterForm/></Route>
+            <Route path={'/register'}><RegisterForm register={register}/></Route>
             <Route path={'/'}><Homepage/></Route>
         </Switch>
     // </CompanyConext.Provider>

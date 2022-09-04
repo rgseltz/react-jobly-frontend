@@ -1,11 +1,13 @@
 import React, {useState} from "react";
-const RegisterForm = () => {
+import { useHistory } from "react-router-dom";
+import JoblyApi from "./api";
+const RegisterForm = ({register}) => {
     const INITIAL_STATE = {
-        firstName : '',
-        lastName : '',
-        username : '',
-        email : '',
-        password:''
+        firstName : 'ryboy',
+        lastName : 'ryboy',
+        username : 'ryboy',
+        email : 'ryboy@gmail.com',
+        password:'ryboy'
     }
     const [formData, setFormData] = useState(INITIAL_STATE)
     const handleChange = (evt) => {
@@ -13,13 +15,21 @@ const RegisterForm = () => {
         setFormData(data => ({...data, [name] : value}))
         console.log(formData);
     }
-    const handleSubmit = (evt) => {
+    const handleSubmit = async (evt) => {
         evt.preventDefault();
-        // const formData = {firstName, lastName, email, password, username};
-        console.log(formData);
-        //API REQUEST TO REGISTER//
+        const {firstName, lastName, email, password, username} = formData;
+        register(formData);
         setFormData(INITIAL_STATE);
+        history.push('/companies');
     }
+    const history = useHistory();
+
+    // const registerUser = async (firstName, lastName, email, password, username) => {
+    //     let newUser = await JoblyApi(firstName, lastName, email, password, username);
+    //     console.log(newUser)
+    //     return newUser;
+    // }
+    
     return (
         <div>
             <h1>Signup to Jobly NOW!!!!</h1>
