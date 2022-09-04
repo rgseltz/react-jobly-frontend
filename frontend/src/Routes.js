@@ -5,7 +5,7 @@ import CompaniesList from "./CompaniesList";
 import CompanyDetail from "./CompanyDetail";
 import LoginForm from "./LoginForm";
 import Jobs from "./Jobs";
-import SignupForm from "./SignupForm";
+import RegisterForm from "./RegisterForm";
 import ProfileForm from './ProfileForm';
 // import CompanyConext from "./companyContext";
 
@@ -19,7 +19,7 @@ return (
             <Route path={'/jobs'}><Jobs/></Route>
             <Route path={'/profile-form'}><ProfileForm/></Route>
             <Route path={'/login'}><LoginForm/></Route>
-            <Route path={'/register'}><SignupForm/></Route>
+            <Route path={'/register'}><RegisterForm/></Route>
             <Route path={'/'}><Homepage/></Route>
         </Switch>
     // </CompanyConext.Provider>
