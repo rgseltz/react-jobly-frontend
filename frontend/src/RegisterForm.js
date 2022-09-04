@@ -17,18 +17,12 @@ const RegisterForm = ({register}) => {
     }
     const handleSubmit = async (evt) => {
         evt.preventDefault();
-        const {firstName, lastName, email, password, username} = formData;
+        // const {firstName, lastName, email, password, username} = formData;
         register(formData);
         setFormData(INITIAL_STATE);
         history.push('/companies');
     }
     const history = useHistory();
-
-    // const registerUser = async (firstName, lastName, email, password, username) => {
-    //     let newUser = await JoblyApi(firstName, lastName, email, password, username);
-    //     console.log(newUser)
-    //     return newUser;
-    // }
     
     return (
         <div>
