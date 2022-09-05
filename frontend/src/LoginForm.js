@@ -1,20 +1,23 @@
 import React, {useState} from "react";
+import useFormData from "./useFormData";
 import { useHistory } from "react-router-dom";
 const LoginForm = ({login}) => {
     const INITIAL_STATE = {
-        username : 'ryboy',
-        password : 'ryboy'
+        username : '',
+        password : ''
     }
-    const [formData, setFormData] = useState(INITIAL_STATE);
-    const handleChange = evt => {
-        const {name, value} = evt.target;
-        setFormData(data => ({...data, [name] : value}));
-        console.log(formData);
-    }
+    // const [formData, setFormData] = useState(INITIAL_STATE);
+    // const handleChange = evt => {
+    //     const {name, value} = evt.target;
+    //     setFormData(data => ({...data, [name] : value}));
+    //     console.log(formData);
+    // }
+    const [formData, handleChange, resetFormData] = useFormData(INITIAL_STATE);
     const history = useHistory()
     const handleSubmit = async (evt) => {
         evt.preventDefault();
         await login(formData);
+        resetFormData(INITIAL_STATE);
         history.push('/companies');
     }
     return (
