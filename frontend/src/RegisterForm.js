@@ -1,25 +1,21 @@
 import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
+import useFormData from "./useFormData";
 import JoblyApi from "./api";
 const RegisterForm = ({register}) => {
     const INITIAL_STATE = {
-        firstName : 'ryboy',
-        lastName : 'ryboy',
-        username : 'ryboy',
-        email : 'ryboy@gmail.com',
-        password:'ryboy'
+        firstName : '',
+        lastName : '',
+        username : '',
+        email : '',
+        password:''
     }
-    const [formData, setFormData] = useState(INITIAL_STATE)
-    const handleChange = (evt) => {
-        const {name, value} = evt.target;
-        setFormData(data => ({...data, [name] : value}))
-        console.log(formData);
-    }
+    const [formData, handleChange, resetFormData] = useFormData(INITIAL_STATE);
     const handleSubmit = async (evt) => {
         evt.preventDefault();
         // const {firstName, lastName, email, password, username} = formData;
         await register(formData);
-        setFormData(INITIAL_STATE);
+        resetFormData(INITIAL_STATE);
         history.push('/companies');
     }
     const history = useHistory();

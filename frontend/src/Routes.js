@@ -11,14 +11,14 @@ import PrivateRoute from "./PrivateRoute";
 // import CompanyConext from "./companyContext";
 
 
-const Routes = ({register, login}) => {
+const Routes = ({register, login, update}) => {
 return (
     // <CompanyConext.Provider value={{companies, setCompanies, description, name, handle, employees}}>
         <Switch>
             <PrivateRoute path={'/companies/:handle'}><CompanyDetail/></PrivateRoute>
             <PrivateRoute path={'/companies'}><CompaniesList/></PrivateRoute>
             <PrivateRoute path={'/jobs'}><Jobs/></PrivateRoute>
-            <PrivateRoute path={'/profile-form'}><ProfileForm/></PrivateRoute>
+            <PrivateRoute path={'/profile-form'}><ProfileForm update={update}/></PrivateRoute>
             <Route path={'/login'}><LoginForm login={login}/></Route>
             <Route path={'/register'}><RegisterForm register={register}/></Route>
             <Route path={'/'}><Homepage/></Route>

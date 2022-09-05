@@ -6,12 +6,6 @@ const LoginForm = ({login}) => {
         username : '',
         password : ''
     }
-    // const [formData, setFormData] = useState(INITIAL_STATE);
-    // const handleChange = evt => {
-    //     const {name, value} = evt.target;
-    //     setFormData(data => ({...data, [name] : value}));
-    //     console.log(formData);
-    // }
     const [formData, handleChange, resetFormData] = useFormData(INITIAL_STATE);
     const history = useHistory()
     const handleSubmit = async (evt) => {

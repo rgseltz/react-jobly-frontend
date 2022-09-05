@@ -17,8 +17,8 @@ const Jobs = () => {
         <div>
         <SearchForm search={getJobs}/>
         {jobs && jobs.map(j => 
-                <div><JobCard 
-                        key={j.id}
+                <div key={j.id}><JobCard 
+                        
                         title={j.title}
                         companyName={j.companyName}
                         companyHandle={j.companyHandle}

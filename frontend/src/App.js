@@ -51,12 +51,22 @@ function App() {
       console.error('invalid login', err)
     }
   }
+
+  const update = async (profileData) => {
+    try {
+      let data = await JoblyApi.update(profileData, currentUser.username);
+      console.log(data);
+    } catch (err) {
+      console.error('request error', err);
+    }
+  }
+
   console.log(token);
   return (
     <BrowserRouter>
       <UserContext.Provider value={currentUser}>
         <Navigation logout={logout}/>
-        <Routes register={registerForToken} login={login}/>
+        <Routes register={registerForToken} login={login} update={update}/>
         {!currentUser && <div> <Link to="/login">Login</Link><Link to="/register">Sign Up</Link></div> }
       </UserContext.Provider>
     </BrowserRouter>
