@@ -12,6 +12,7 @@ import './App.css';
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage('token');
+  const [didApply, setDidApply] = useState(false);
   const logout = () => {
     setCurrentUser(null)
     setToken(null);
@@ -64,7 +65,7 @@ function App() {
   console.log(token);
   return (
     <BrowserRouter>
-      <UserContext.Provider value={currentUser}>
+      <UserContext.Provider value={{currentUser, didApply, setDidApply}}>
         <Navigation logout={logout}/>
         <Routes register={registerForToken} login={login} update={update}/>
         {!currentUser && <div> <Link to="/login">Login</Link><Link to="/register">Sign Up</Link></div> }

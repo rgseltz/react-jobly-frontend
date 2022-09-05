@@ -3,7 +3,7 @@ import useFormData from "./useFormData";
 import { useHistory } from "react-router-dom";
 import UserContext from "./userContext";
 const ProfileForm = ({update}) => {
-    const currentUser = useContext(UserContext)
+    const {currentUser} = useContext(UserContext)
     const INITIAL_STATE = {
         firstName : currentUser.firstName,
         lastName : currentUser.lastName,
