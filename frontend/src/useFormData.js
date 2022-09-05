@@ -2,7 +2,7 @@ import React, {useState} from "react";
 const useFormData = (initialState) => {
     const [formData, setFormData] = useState(initialState) 
     const handleChange = (evt) => {
-        const [name, value] = evt.target;
+        const {name, value} = evt.target;
         setFormData(data => ({...data, [name] : value}));
     }
 
