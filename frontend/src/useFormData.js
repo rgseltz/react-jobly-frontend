@@ -11,3 +11,4 @@ const useFormData = (initialState) => {
     };
     return [formData, handleChange, resetFormData];    
 }
+export default useFormData;
