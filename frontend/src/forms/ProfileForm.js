@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import useFormData from "./useFormData";
+import useFormData from "../hooks/useFormData";
 import { useHistory } from "react-router-dom";
 import UserContext from "../hooks/userContext";
 const ProfileForm = ({update}) => {

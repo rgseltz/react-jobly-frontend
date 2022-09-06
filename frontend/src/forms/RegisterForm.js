@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
-import useFormData from "./useFormData";
-import JoblyApi from "./api";
+import useFormData from "../hooks/useFormData";
+import JoblyApi from "../api";
 const RegisterForm = ({register}) => {
     const INITIAL_STATE = {
         firstName : '',

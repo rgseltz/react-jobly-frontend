@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import useFormData from "./useFormData";
+import useFormData from "../hooks/useFormData";
 import { useHistory } from "react-router-dom";
 const LoginForm = ({login}) => {
     const INITIAL_STATE = {

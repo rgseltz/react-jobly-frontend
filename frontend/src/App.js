@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react';
 import {BrowserRouter, Link} from 'react-router-dom';
 import UserContext from './hooks/userContext';
-import useLocalStorage from './useLocalStorage';
+import useLocalStorage from './hooks/useLocalStorage';
 import JoblyApi from './api';
 import Navigation from './Navigation';
 import Homepage from './Homepage';
