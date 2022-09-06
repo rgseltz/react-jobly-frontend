@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import useFormData from "./useFormData";
 import { useHistory } from "react-router-dom";
-import UserContext from "./userContext";
+import UserContext from "../hooks/userContext";
 const ProfileForm = ({update}) => {
     const {currentUser} = useContext(UserContext)
     const INITIAL_STATE = {

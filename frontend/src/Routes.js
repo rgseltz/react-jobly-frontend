@@ -1,12 +1,12 @@
 import React from "react";
 import {Switch, Route, Redirect} from 'react-router-dom';
 import Homepage from "./Homepage";
-import CompaniesList from "./CompaniesList";
-import CompanyDetail from "./CompanyDetail";
-import LoginForm from "./LoginForm";
-import Jobs from "./Jobs";
-import RegisterForm from "./RegisterForm";
-import ProfileForm from './ProfileForm';
+import CompaniesList from "./companies/CompaniesList";
+import CompanyDetail from ".companies/CompanyDetail";
+import LoginForm from ".forms/LoginForm";
+import Jobs from "./jobs/Jobs";
+import RegisterForm from ".forms/RegisterForm";
+import ProfileForm from './forms/ProfileForm';
 import PrivateRoute from "./PrivateRoute";
 // import CompanyConext from "./companyContext";
 

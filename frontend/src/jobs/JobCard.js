@@ -1,5 +1,5 @@
 import React,{useContext, useEffect, useState} from "react";
-import UserContext from "./userContext";
+import UserContext from "../hooks/userContext";
 const JobCard = ({title, equity, salary, company, id}) => {
     const {currentUser, alreadyApplied, applyToJob, appIds} = useContext(UserContext);
     const [clickedApply, setClickedApply] = useState(false);
@@ -13,6 +13,7 @@ const JobCard = ({title, equity, salary, company, id}) => {
     }
    useEffect(() => {
     if (appIds.includes(id)){
+        console.log(currentUser);
         setClickedApply(!clickedApply);
         return console.log('already-applied');
     }

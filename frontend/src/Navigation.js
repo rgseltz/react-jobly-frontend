@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import {NavItem, NavLink, Link, Nav} from "react-router-dom";
-import userContext from "./userContext";
+import userContext from "./hooks/userContext";
 const Navigation = ({logout}) => {
     const {currentUser} = useContext(userContext);
     console.log(currentUser);
