@@ -12,7 +12,8 @@ import './App.css';
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage('token');
-  const [didApply, setDidApply] = useState(false);
+  // const [didApply, setDidApply] = useState(false);
+  const [appIds, setAppIds] = useState([])
   const logout = () => {
     setCurrentUser(null)
     setToken(null);
@@ -28,6 +29,10 @@ function App() {
       let user = await JoblyApi.getCurrentUser(username);
       console.log(user)
       setCurrentUser(user);
+      if(user.applications.length !== 0) {
+      setAppIds([...appIds, ...user.applications])
+      }
+      // console.log(user.applications)
         }
       }
       getUser();
@@ -61,11 +66,23 @@ function App() {
       console.error('request error', err);
     }
   }
-
   console.log(token);
+  function alreadyApplied(id){
+    appIds.find(id);
+  }
+  async function applyToJob(id) {
+    try {
+      let res = await JoblyApi.apply(id, currentUser.username);
+      console.log(res);
+      setAppIds([...appIds, appIds.push(id)]);
+      console.log(appIds);
+    } catch (err) {
+      console.error(err);
+    }
+  }
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{currentUser, didApply, setDidApply}}>
+      <UserContext.Provider value={{currentUser, applyToJob, alreadyApplied, appIds}}>
         <Navigation logout={logout}/>
         <Routes register={registerForToken} login={login} update={update}/>
         {!currentUser && <div> <Link to="/login">Login</Link><Link to="/register">Sign Up</Link></div> }
