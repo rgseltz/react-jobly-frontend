@@ -23,8 +23,8 @@ const JobCard = ({title, equity, salary, company, id}) => {
     const applyBtn = <button className="JobCard btn btn-primary btn-apply" onClick={handleApplication}>Apply</button>
     const appliedBtn = <button className="JobCard btn btn-secondary btn-applied">Applied</button>
     return (
-            <div className="JobCard card text-center">
-                <div className="JobCard card-body">
+            <div className="JobCard card text-center container m-3">
+                <div className="JobCard card-body row m-3">
                 <h4 className="JobCard card-title">{company}</h4>
                 <h5 className="JobCard card-title">{title}</h5>
                 <p className="JobCard card-text">Salary: {salary}</p>

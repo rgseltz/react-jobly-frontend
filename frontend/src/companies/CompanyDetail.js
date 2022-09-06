@@ -20,12 +20,14 @@ const CompanyDetail = () => {
     return (
         <div>
         {company && 
-            <div>
+            <div className="CompanyDetail container">
+                <div className="CompanyDetail row">
                     <h1 className="CompanyDetail name">{company.name}</h1>
                     <h4 className="CompanyDetail description-heading">Company Description:</h4>
                     <p className="CompanyDetail description">{company.description}</p>
                     <p className="CompanyDetail employees">Employees: {company.numEmployees}</p>
                     <h3>Available Roles:</h3>
+                </div>
                     <JobsList jobs={company.jobs}/>
             </div>
             

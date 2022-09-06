@@ -1,5 +1,5 @@
-import React, {useState, useContext, useEffect} from 'react';
-import {BrowserRouter, Link} from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
 import UserContext from './hooks/userContext';
 import useLocalStorage from './hooks/useLocalStorage';
 import JoblyApi from './api';
@@ -22,22 +22,22 @@ function App() {
 
   useEffect(() => {
     const getUser = async () => {
-    if (token) {
-      let {username} = jwt.decode(token);
-      console.log(username);
-      JoblyApi.token = token;
-      let user = await JoblyApi.getCurrentUser(username);
-      console.log(user)
-      setCurrentUser(user);
-      if(user.applications.length !== 0) {
-      setAppIds([...appIds, ...user.applications])
-      }
-      // console.log(user.applications)
+      if (token) {
+        let { username } = jwt.decode(token);
+        console.log(username);
+        JoblyApi.token = token;
+        let user = await JoblyApi.getCurrentUser(username);
+        console.log(user)
+        setCurrentUser(user);
+        if (user.applications.length !== 0) {
+          setAppIds(user.applications)
         }
+        // console.log(user.applications)
       }
-      getUser();
+    }
+    getUser();
   }, [token]
-  );  
+  );
   console.log('current user', currentUser);
   const registerForToken = async (registerFormData) => {
     try {
@@ -49,7 +49,7 @@ function App() {
   }
 
   const login = async (loginFormData) => {
-    try{
+    try {
       let token = await JoblyApi.login(loginFormData);
       setToken(token);
       console.log(token);
@@ -67,14 +67,14 @@ function App() {
     }
   }
   console.log(token);
-  function alreadyApplied(id){
-    appIds.find(id);
-  }
+  // function alreadyApplied(id) {
+  //   return appIds.find(id);
+  // }
   async function applyToJob(id) {
     try {
       let res = await JoblyApi.apply(id, currentUser.username);
       console.log(res);
-      setAppIds([...appIds, appIds.push(id)]);
+      setAppIds([...appIds, id]);
       console.log(appIds);
     } catch (err) {
       console.error(err);
@@ -82,10 +82,10 @@ function App() {
   }
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{currentUser, applyToJob, alreadyApplied, appIds}}>
-        <Navigation logout={logout}/>
-        <Routes register={registerForToken} login={login} update={update}/>
-        {!currentUser && <div> <Link to="/login">Login</Link><Link to="/register">Sign Up</Link></div> }
+      <UserContext.Provider value={{ currentUser, applyToJob, appIds }}>
+        <Navigation logout={logout} />
+        <Routes register={registerForToken} login={login} update={update} />
+        {!currentUser && <div> <Link to="/login">Login</Link><Link to="/register">Sign Up</Link></div>}
       </UserContext.Provider>
     </BrowserRouter>
   );
